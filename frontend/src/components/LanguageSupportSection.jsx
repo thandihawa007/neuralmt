@@ -2,13 +2,24 @@
  * LanguageSupportSection.jsx
  * --------------------------
  * Section 6 — "Language Support / Coverage"
- * Badge grid of EN→HI, EN→FR, EN→ES, HI→EN pill shapes.
- * Exact copy from NeuralMT_Master_Gravity_Prompt.md
+ *
+ * Pairs listed here are VERIFIED to have a working Helsinki-NLP OPUS-MT model
+ * and match exactly the SUPPORTED_PAIRS in ml-service/models/translator.py
+ * and the LANGUAGES list in TranslatorPanel.jsx.
+ *
+ * DO NOT add a pair here unless it is also present in translator.py's SUPPORTED_PAIRS.
  */
 
 import React from "react";
 
-const PAIRS = ["EN → HI", "EN → FR", "EN → ES", "HI → EN"];
+const PAIRS = [
+  { label: "EN → HI", src: "en", tgt: "hi" },
+  { label: "HI → EN", src: "hi", tgt: "en" },
+  { label: "EN → FR", src: "en", tgt: "fr" },
+  { label: "FR → EN", src: "fr", tgt: "en" },
+  { label: "EN → ES", src: "en", tgt: "es" },
+  { label: "ES → EN", src: "es", tgt: "en" },
+];
 
 export default function LanguageSupportSection() {
   return (
@@ -29,14 +40,14 @@ export default function LanguageSupportSection() {
         </p>
       </div>
 
-      {/* Badge grid */}
+      {/* Badge grid — only verified-working pairs */}
       <div className="flex flex-wrap gap-3 mb-8">
         {PAIRS.map((pair) => (
           <span
-            key={pair}
+            key={pair.label}
             className="font-mono text-[13px] tracking-[0.06em] text-text-secondary border border-border rounded-full px-5 py-2 hover:border-[#383838] hover:text-text-primary transition-colors duration-200"
           >
-            {pair}
+            {pair.label}
           </span>
         ))}
       </div>
