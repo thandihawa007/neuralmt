@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Reset & base ──────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-canvas text-text-primary font-sans;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Remove default list styling */
+  ul, ol { list-style: none; margin: 0; padding: 0; }
+
+  /* Consistent anchor reset */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Selection color */
+  ::selection {
+    background: rgba(59, 130, 246, 0.25);
+    color: #FAFAFA;
+  }
+}
+
+/* ── Design-system utilities ────────────────────────────────────────────── */
+@layer utilities {
+  /* Thin horizontal divider */
+  .divider {
+    @apply w-full h-px bg-border;
+  }
+
+  /* Eyebrow label style */
+  .eyebrow {
+    @apply text-caption font-medium uppercase tracking-[0.14em] text-text-secondary;
+  }
+
+  /* Subtle glass nav background */
+  .nav-glass {
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid #1C1C1C;
+  }
+
+  /* Scroll-driven fade-up — applied via JS IntersectionObserver in components */
+  .in-view {
+    @apply animate-fade-up;
+  }
+}
+
+/* ── Hero headline sizing ───────────────────────────────────────────────── */
+.hero-title {
+  font-size: clamp(42px, 5.8vw, 68px);
+  line-height: 1.08;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Pixel word ("borders.") — Press Start 2P ───────────────────────────── */
+.pixel-word {
+  font-family: 'Press Start 2P', monospace;
+  color: #4E6EFF;
+  font-size: 0.72em;           /* Increased height and scale */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  vertical-align: baseline;
+  -webkit-font-smoothing: none;
+  image-rendering: pixelated;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar          { width: 6px; }
+::-webkit-scrollbar-track    { background: #0A0A0A; }
+::-webkit-scrollbar-thumb    { background: #262626; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3A3A3A; }
+
